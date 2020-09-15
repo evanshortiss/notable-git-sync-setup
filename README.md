@@ -1,9 +1,7 @@
 # Notable Git Sync for macOS
 
-Configures a [macOS User LaunchAgent](https://www.launchd.info/) that
-synchronises the `~/.notable` folder to a Git repository.
-
 <div align="center">
+  <p>Configures a <a href="https://www.launchd.info/">macOS User LaunchAgent</a> that synchronises the <code>~/.notable</code> folder to a Git repository.
   <p>You'll get a nice notification if you have a recent version of Node.js installed.</p>
   <img alt="Example Notification" width="500" src="https://github.com/evanshortiss/notable-git-sync-setup/blob/master/notification.png?raw=true"/>
 </div>
