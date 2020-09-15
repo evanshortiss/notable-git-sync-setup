@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.notable-sync</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>{{path}}</string>
+      <key>HOME</key>
+      <string>{{home}}</string>
+    </dict>
+    <key>Program</key>
+    <string>{{program}}</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StartInterval</key>
+    <integer>600</integer>
+    <key>StandardOutPath</key>
+    <string>/tmp/notable-sync.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/notable-sync.stderr</string>
+  </dict>
+</plist>
