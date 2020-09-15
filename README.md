@@ -19,7 +19,7 @@ Note that the `setup.sh` script assumes that the repository you are using is
 empty. For example, you create a repository at [github.com/new](https://github.com/new)
 and leave it uninitialised.
 
-Clone the repository an follow the prompts:
+Clone the repository, run the `setup.sh`, and follow the prompts:
 
 ```bash
 git clone https://github.com/evanshortiss/notable-git-sync-setup notable-sync
