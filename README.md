@@ -25,7 +25,7 @@ Clone the repository, run the `setup.sh`, and follow the prompts:
 git clone https://github.com/evanshortiss/notable-git-sync-setup notable-sync
 
 cd notable-sync
-./setup
+./setup.sh
 ```
 
 ## Default Configuration
@@ -33,6 +33,6 @@ cd notable-sync
 The configuration for the service is defined in the *plist.template.xml*.
 
 * Assumes a default `~/.ssh/id_rsa` SSH configuration for Git.
-* Logs are written to `/tmp/notable-sync.stdout` and `/tmp/notable-sync.stderr`.s
+* Logs are written to `/tmp/notable-sync.stdout` and `/tmp/notable-sync.stderr`.
 * Notes are synchronised to the Git repository every 10 minutes.
-* Fails on Git merge conflicts. If your notes are not syncing, this might be why.
+* Fails on Git merge conflicts. Are your notes are not syncing? This might be why.
