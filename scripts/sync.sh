@@ -13,6 +13,13 @@ echo "Notable sync started at $NOTABLE_SYNC_DATE"
 
 cd ~/.notable/
 
+git status | grep "nothing to commit"
+
+if [ $? -eq 0 ]; then
+    echo "Notable sync skipped. Nothing to commit.\n"
+    exit 0
+fi
+
 git add .
 git commit -m "Automatically synced on $NOTABLE_SYNC_DATE"
 git pull origin master
