@@ -1,4 +1,4 @@
-# Notable Git Sync for macOS
+# Notable Git Sync
 
 <div align="center">
   <p>Configures a <a href="https://www.launchd.info/">macOS User LaunchAgent</a> that synchronises the <code>~/.notable</code> folder to a Git repository.
@@ -12,6 +12,10 @@
 * Git installed on macOS ([Installation options](https://git-scm.com/download/mac)).
 * Git SSH keys configured ([GitHub Docs for SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)) using default `id_rsa` naming scheme.
 * [Optional] Node.js v12+ is required for macOS notification integration.
+
+## OS Support
+
+Currently only macOS is supported. Pull Requests that add support for other platforms are welcome!
 
 ## Setup
 
