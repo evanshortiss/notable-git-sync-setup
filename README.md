@@ -8,7 +8,7 @@
 
 ## Requirements
 
-* An **empty** Git repository on GitHub, GitLab, or some Git server.
+* A Git repository on GitHub, GitLab, or some Git server.
 * Git installed on macOS ([Installation options](https://git-scm.com/download/mac)).
 * Git SSH keys configured ([GitHub Docs for SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)) using default `id_rsa` naming scheme.
 * [Optional] Node.js v12+ is required for macOS notification integration.
@@ -19,9 +19,7 @@ Currently only macOS is supported. Pull Requests that add support for other plat
 
 ## Setup
 
-Note that the `setup.sh` script assumes that the repository you are using is
-empty. For example, you create a repository at [github.com/new](https://github.com/new)
-and leave it uninitialised.
+_NOTE: This script assumes you are using the `~/.notable` directory for storing notes. After running the script use the **Change Data Directory** option in Notable to set your data directory to `~/.notable`._
 
 Clone the repository, run the `setup.sh`, and follow the prompts:
 

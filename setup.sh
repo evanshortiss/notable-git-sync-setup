@@ -1,5 +1,6 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 HAS_GIT=$(which git)
+NOTABLE_DIR=~/.notable
 
 if [ -z "$HAS_GIT" ]; then
     echo "Git not found. Please install Git and try again."
@@ -27,41 +28,41 @@ git ls-remote $REPO_SSH_URL > /dev/null 2>&1
 echo "Alright, looks like that repository exists and you have access!\n"
 sleep 3
 
-echo "Initialising your notable directory at ~/.notable with Git...\n"
+echo "Initialising a Notable directory at $NOTABLE_DIR with Git...\n"
 
-# Verify that an existing git repository isn't already configured 
-cd ~/.notable
-if [ -d ".git" ]; then
-    echo "Looks like ~/.notable is already initialised with Git."
-    echo "You can remove the Git folder using this command:\n"
-    
-    echo "rm -rf ~/.notable/.git\n"
-
-    echo "WARNING: If the repository is not synced, the Git history will be lost."
+if [ -d "$NOTABLE_DIR" ] 
+then
+    echo "The $NOTABLE_DIR directory already exists, but this script requires a clean start."
+    echo "Please copy your $NOTABLE_DIR directory some place as a backup, then delete the $NOTABLE_DIR and re-run this script."
+    echo "You can copy the \"notes\" and \"attachment\" folders from your notes backup into the $NOTABLE_DIR directory after this script has been re-run."
     exit 1
 fi
 
+mkdir $NOTABLE_DIR
+cd $NOTABLE_DIR
+
 # Initialise the local repository and perform an initial sync
-git init
-git remote add origin $REPO_SSH_URL
-echo "\nPerforming initial Git commit...\n"
-git add .
-git commit -m "initial sync using notable-sync setup script"
-echo "\nPerforming initial Git push...\n"
-git push origin master
+git clone $REPO_SSH_URL .
 
 # Copy a default gitignore and sync.sh script to the ~/.notable directory
 echo "Setting up LaunchAgent script for 20 minute sync intervals..."
+echo "Changing directory into scripts dir $SCRIPT_DIR"
 cd $SCRIPT_DIR
-cp .gitignore ~/.notable/.gitignore
-cp scripts/sync.sh ~/.notable/sync.sh
-chmod +x ~/.notable/sync.sh
+cp .gitignore $NOTABLE_DIR/.gitignore
+cp scripts/sync.sh $NOTABLE_DIR/sync.sh
+chmod +x $NOTABLE_DIR/sync.sh
 
 # Replace template variables in the plist with valid values and write to disk
+if [ ! -d "~/Library/LaunchAgents/" ] 
+then
+    echo "Creating ~/Library/LaunchAgents/ folder..."
+    mkdir ~/Library/LaunchAgents/
+fi
+
 cat plist.template.xml | \
 sed "s|{{path}}|${PATH}|g" | \
 sed "s|{{home}}|$HOME|g"| \
-sed "s|{{program}}|$HOME/.notable/sync.sh|g" > ~/Library/LaunchAgents/com.notable-sync.plist
+sed "s|{{program}}|$NOTABLE_DIR/sync.sh|g" > ~/Library/LaunchAgents/com.notable-sync.plist
 
 # If the previous LaunchAgent exists, then unload it
 if [ -f "~/Library/LaunchAgents/com.notable-sync.plist" ]; then
