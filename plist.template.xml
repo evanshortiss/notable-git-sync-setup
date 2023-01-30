@@ -11,12 +11,15 @@
       <key>HOME</key>
       <string>{{home}}</string>
     </dict>
-    <key>Program</key>
-    <string>{{program}}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{program}}</string>
+        <string>{{notif}}</string>
+    </array>
     <key>RunAtLoad</key>
     <true/>
     <key>StartInterval</key>
-    <integer>600</integer>
+    <integer>{{sync_interval}}</integer>
     <key>StandardOutPath</key>
     <string>/tmp/notable-sync.stdout</string>
     <key>StandardErrorPath</key>
