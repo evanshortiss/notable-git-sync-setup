@@ -53,7 +53,7 @@ initialize () {
         exit 1
     fi
 
-    # Read in and validate a user provided sync interval time in seconds
+    # Read in and validate a user provided choice for notifications
     read -p "Do you want to receive notifications? [default:true] (y/n) " yn
     case $yn in 
         "" ) NOTIF=true;;
@@ -120,7 +120,7 @@ if [ "$OSTYPE" = "darwin" ]; then
     mac_os_setup
 elif [ "$OSTYPE" = "linux-gnu" ]; then
     NOTABLE_DIR="/home/$SUDO_USER/.notable"
-    if [[ $EUID -ne 0 ]]; then
+    if [[ $EUID -ne 0 ]]; then 
         echo "$0 is not running as root. Try using sudo."
         exit 2
     fi
