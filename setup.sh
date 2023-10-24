@@ -114,7 +114,7 @@ linux_setup () {
     systemctl enable notable-sync.timer 
 }
 
-if [ "$OSTYPE" = "darwin" ]; then
+if [[ "$OSTYPE" = "darwin"* ]]; then
     NOTABLE_DIR=~/.notable
     initialize
     mac_os_setup
@@ -130,4 +130,4 @@ else
     echo "OS not supported... (https://github.com/evanshortiss/notable-git-sync-setup#os-support)"
 fi
 
-echo "\nDone!"
+echo "Done!"
